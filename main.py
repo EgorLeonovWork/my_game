@@ -1,7 +1,7 @@
 import pygame
 
 class Object(pygame.sprite.Sprite):
-    def __inint__(self, img, x, y, speed):
+    def __init__(self, img, x, y, speed):
         pygame.sprite.Sprite.__init__(self)
         self.image = img
         self.rect = self.image.get_rect()
@@ -15,7 +15,22 @@ heigth = 600
 window = pygame.display.set_mode((800,600))
 pygame.display.set_caption("DOTA 3")
 
+#точка спавна игрока
+start_x = 100
+start_y = 120
+
+#импорт изображения
 bg = pygame.transform.scale(pygame.image.load("images/bg.png"), (width,heigth))
+player_img = pygame.transform.scale(pygame.image.load("images/sf.png"), (256,256))
+
+#создание групп обьектов
+all_sprites = pygame.sprite.Group()
+
+
+#создание обьектов
+player = Object(player_img, start_x, start_y, 3)
+all_sprites.add(player)
+
 
 run = True
 while run:
@@ -23,6 +38,20 @@ while run:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
-        
-        
+
+    keys = pygame.key.get_pressed()    
+    if event.type == pygame.KEYDOWN:
+        if keys[pygame.K_w]:
+            player.rect.y -= player.speed
+        if keys[pygame.K_s]:
+            player.rect.y += player.speed
+        if keys[pygame.K_a]:
+            player.image = pygame.transform.flip(player_img, True, False)
+            player.rect.x -= player.speed
+        if keys[pygame.K_d]:
+            player.image = pygame.transform.flip(player_img, False, False)
+            player.rect.x += player.speed
+    
+    all_sprites.draw(window) 
+    all_sprites.update()
     pygame.display.update()
