@@ -16,21 +16,30 @@ window = pygame.display.set_mode((800,600))
 pygame.display.set_caption("DOTA 3")
 
 #точка спавна игрока
-start_x = 600
-start_y = 500
+start_x = 50
+start_y = 60
 
 #импорт изображения
 bg = pygame.transform.scale(pygame.image.load("images/bg.png"), (width,heigth))
-player_img = pygame.transform.scale(pygame.image.load("images/sf.png"), (128,128))
+player_img = pygame.transform.scale(pygame.image.load("images/sf.png"), (43,43))
 wall = pygame.transform.scale(pygame.image.load("images/wall.png"), (50,50))
+enemy = pygame.transform.scale(pygame.image.load("images/tinker.png"), (70,70))
 
 #создание групп обьектов
 all_sprites = pygame.sprite.Group()
 walls = pygame.sprite.Group()
+enemies = pygame.sprite.Group()
 
+#создание врагов
+enemy2 = Object(enemy, 660, 470, 3)
+enemies.add(enemy2)
+all_sprites.add(enemy2)
+enemy3 = Object(enemy, 60, 470, 3)
+enemies.add(enemy3)
+all_sprites.add(enemy3)
 
 #создание обьектов
-player = Object(player_img, start_x, start_y, 3)
+player = Object(player_img, start_x, start_y, 5)
 all_sprites.add(player)
 
 #создание обьектов
@@ -205,22 +214,120 @@ all_sprites.add(wall53)
 wall54 = Object(wall, 50, 550, 0)
 walls.add(wall54)
 all_sprites.add(wall54)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+wall55 = Object(wall, 50, 130, 0)
+walls.add(wall55)
+all_sprites.add(wall55)
+wall56 = Object(wall, 100, 130, 0)
+walls.add(wall56)
+all_sprites.add(wall56)
+wall57 = Object(wall, 150, 130, 0)
+walls.add(wall57)
+all_sprites.add(wall57)
+wall58 = Object(wall, 200, 130, 0)
+walls.add(wall58)
+all_sprites.add(wall58)
+wall59 = Object(wall, 250, 130, 0)
+walls.add(wall59)
+all_sprites.add(wall59)
+wall60 = Object(wall, 250, 180, 0)
+walls.add(wall60)
+all_sprites.add(wall60)
+wall61 = Object(wall, 250, 230, 0)
+walls.add(wall61)
+all_sprites.add(wall61)
+wall62 = Object(wall, 300, 230, 0)
+walls.add(wall62)
+all_sprites.add(wall62)
+wall63 = Object(wall, 350, 230, 0)
+walls.add(wall63)
+all_sprites.add(wall63)
+wall64 = Object(wall, 400, 230, 0)
+walls.add(wall64)
+all_sprites.add(wall64)
+wall65 = Object(wall, 450, 230, 0)
+walls.add(wall65)
+all_sprites.add(wall65)
+wall66 = Object(wall, 500, 230, 0)
+walls.add(wall66)
+all_sprites.add(wall66)
+wall67 = Object(wall, 550, 230, 0)
+walls.add(wall67)
+all_sprites.add(wall67)
+wall68 = Object(wall, 600, 230, 0)
+walls.add(wall68)
+all_sprites.add(wall68)
+wall69 = Object(wall, 425, 180, 0)
+walls.add(wall69)
+all_sprites.add(wall69)
+wall70 = Object(wall, 425, 130, 0)
+walls.add(wall70)
+all_sprites.add(wall70)
+wall71 = Object(wall, 600, 130, 0)
+walls.add(wall71)
+all_sprites.add(wall71)
+wall72 = Object(wall, 600, 180, 0)
+walls.add(wall72)
+all_sprites.add(wall72)
+wall73 = Object(wall, 520, 20, 0)
+walls.add(wall73)
+all_sprites.add(wall73)
+wall74 = Object(wall, 340, 20, 0)
+walls.add(wall74)
+all_sprites.add(wall74)
+wall75 = Object(wall, 520, 20, 0)
+walls.add(wall75)
+all_sprites.add(wall75)
+wall76 = Object(wall, 700, 350, 0)
+walls.add(wall76)
+all_sprites.add(wall76)
+wall77 = Object(wall, 650, 350, 0)
+walls.add(wall77)
+all_sprites.add(wall77)
+wall78 = Object(wall, 600, 350, 0)
+walls.add(wall78)
+all_sprites.add(wall78)
+wall79 = Object(wall, 600, 400, 0)
+walls.add(wall79)
+all_sprites.add(wall79)
+wall80 = Object(wall, 470, 330, 0)
+walls.add(wall80)
+all_sprites.add(wall80)
+wall81 = Object(wall, 470, 280, 0)
+walls.add(wall81)
+all_sprites.add(wall81)
+wall82 = Object(wall, 470, 370, 0)
+walls.add(wall82)
+all_sprites.add(wall82)
+wall83 = Object(wall, 470, 400, 0)
+walls.add(wall83)
+all_sprites.add(wall83)
+wall84 = Object(wall, 420, 400, 0)
+walls.add(wall84)
+all_sprites.add(wall84)
+wall85 = Object(wall, 300, 350, 0)
+walls.add(wall85)
+all_sprites.add(wall85)
+wall86 = Object(wall, 300, 400, 0)
+walls.add(wall86)
+all_sprites.add(wall86)
+wall87 = Object(wall, 300, 450, 0)
+walls.add(wall87)
+all_sprites.add(wall87)
+wall88 = Object(wall, 300, 500, 0)
+walls.add(wall88)
+all_sprites.add(wall88)
+wall89 = Object(wall, 250, 350, 0)
+walls.add(wall89)
+all_sprites.add(wall89)
+wall90 = Object(wall, 200, 350, 0)
+walls.add(wall90)
+all_sprites.add(wall90)
+wall91 = Object(wall, 150, 350, 0)
+walls.add(wall91)
+all_sprites.add(wall91)
+wall92 = Object(wall, 150, 400, 0)
+walls.add(wall92)
+all_sprites.add(wall92)
 
 
 run = True
@@ -242,6 +349,22 @@ while run:
         if keys[pygame.K_d]:
             player.image = pygame.transform.flip(player_img, False, False)
             player.rect.x += player.speed
+    
+    if len(pygame.sprite.spritecollide(player, walls, False)) > 0:
+        player.rect.x = start_x
+        player.rect.y = start_y
+
+
+    enemy2.rect.x += enemy2.speed
+    enemy3.rect.y += enemy3.speed
+    if len(pygame.sprite.spritecollide(enemy2, walls, False)) > 0:
+        enemy2.speed *= -1
+    if len(pygame.sprite.spritecollide(enemy3, walls, False)) > 0:
+        enemy3.speed *= -1
+    if len(pygame.sprite.spritecollide(player, enemies, False)) > 0:
+        player.rect.x = start_x
+        player.rect.y = start_y
+
     
     all_sprites.draw(window) 
     all_sprites.update()
