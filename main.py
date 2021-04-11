@@ -24,11 +24,13 @@ bg = pygame.transform.scale(pygame.image.load("images/bg.png"), (width,heigth))
 player_img = pygame.transform.scale(pygame.image.load("images/sf.png"), (43,43))
 wall = pygame.transform.scale(pygame.image.load("images/wall.png"), (50,50))
 enemy = pygame.transform.scale(pygame.image.load("images/tinker.png"), (70,70))
+soul = pygame.transform.scale(pygame.image.load("images/dushi2.png"), (30,30))
 
 #создание групп обьектов
 all_sprites = pygame.sprite.Group()
 walls = pygame.sprite.Group()
 enemies = pygame.sprite.Group()
+souls = pygame.sprite.Group()
 
 #создание врагов
 enemy2 = Object(enemy, 660, 470, 3)
@@ -41,6 +43,24 @@ all_sprites.add(enemy3)
 #создание обьектов
 player = Object(player_img, start_x, start_y, 5)
 all_sprites.add(player)
+
+#создание душ
+soul1 = Object(soul, 340, 200, 0)
+souls.add(soul1)
+all_sprites.add(soul1)
+soul2 = Object(soul, 680, 430, 0)
+souls.add(soul2)
+all_sprites.add(soul2)
+soul3 = Object(soul, 240, 430,0)
+souls.add(soul3)
+all_sprites.add(soul3)
+soul4 = Object(soul, 530, 200,0)
+souls.add(soul4)
+all_sprites.add(soul4)
+soul5 = Object(soul, 240, 500,0)
+souls.add(soul5)
+all_sprites.add(soul5)
+
 
 #создание обьектов
 wall1 = Object(wall, 0, 150, 0)
@@ -331,6 +351,7 @@ all_sprites.add(wall92)
 
 
 run = True
+points = 0
 while run:
     window.blit(bg, (0, 0))
     for event in pygame.event.get():
@@ -364,6 +385,11 @@ while run:
     if len(pygame.sprite.spritecollide(player, enemies, False)) > 0:
         player.rect.x = start_x
         player.rect.y = start_y
+
+#получение душ
+    if len(pygame.sprite.pygame.sprite.spritecollide(player, souls, True)) > 0:
+        points += 1
+        print(points)
 
     
     all_sprites.draw(window) 
