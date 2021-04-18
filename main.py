@@ -1,4 +1,6 @@
 import pygame
+import pygame.mixer
+pygame.init()
 
 class Object(pygame.sprite.Sprite):
     def __init__(self, img, x, y, speed):
@@ -14,6 +16,10 @@ heigth = 600
 
 window = pygame.display.set_mode((800,600))
 pygame.display.set_caption("DOTA 3")
+
+pygame.mixer.music.load("music/bg.mp3")
+pygame.mixer.music.play()
+pygame.mixer.music.set_volume(0.5)
 
 #точка спавна игрока
 start_x = 50
@@ -349,6 +355,9 @@ wall92 = Object(wall, 150, 400, 0)
 walls.add(wall92)
 all_sprites.add(wall92)
 
+#text
+souls_font = pygame.font.Font(None, 35)
+souls_text = souls_font.render("Души: 0", True, pygame.Color("white"))
 
 run = True
 points = 0
@@ -389,9 +398,11 @@ while run:
 #получение душ
     if len(pygame.sprite.pygame.sprite.spritecollide(player, souls, True)) > 0:
         points += 1
-        print(points)
+        souls_text = souls_font.render(("Души: " + str(points)), True, pygame.Color("white"))
+        
 
     
     all_sprites.draw(window) 
     all_sprites.update()
+    window.blit(souls_text,(700,0))
     pygame.display.update()
