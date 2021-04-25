@@ -1,6 +1,11 @@
 import pygame
 import pygame.mixer
+from tkinter import *
+from tkinter import messagebox as mb
 pygame.init()
+
+# create hide Tk window
+Tk().wm_withdraw()
 
 class Object(pygame.sprite.Sprite):
     def __init__(self, img, x, y, speed):
@@ -399,7 +404,10 @@ while run:
     if len(pygame.sprite.pygame.sprite.spritecollide(player, souls, True)) > 0:
         points += 1
         souls_text = souls_font.render(("Души: " + str(points)), True, pygame.Color("white"))
-        
+
+    if points == 5:
+        mb.showinfo("Information", "You win!")
+        run = False    
 
     
     all_sprites.draw(window) 
